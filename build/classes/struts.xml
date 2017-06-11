@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+	
+<struts>
+
+	<!-- 配置struts2上传文件的大小，默认为2097152字节 -->
+	<constant name="struts.multipart.maxSize" value="2097152"></constant>
+
+	<!-- 修改struts2中的默认常量 -->
+	<constant name="struts.i18n.encoding" value="UTF-8"></constant>
+	
+	<package name="demo1" extends="struts-default" namespace="/">
+		<!-- customer -->
+		<action name="customer_*" class="customerAction" method="{1}">
+			<result name="index">/index.jsp</result>
+			<result name="indexRedirect" type="redirect">/index.jsp</result>
+			<result name="success" type="redirect">/success.jsp</result>
+			<result name="successEdit" type="redirect">/successEdit.jsp</result>
+			<result name="editInfo">/WEB-INF/editInfo/editInfo.jsp</result>
+			<result name="Managerindex">/WEB-INF/manager/managerIndex.jsp</result>
+		</action>
+		
+		<!-- customer_token -->
+		<action name="customertoken_*" class="customerAction" method="{1}">
+			<result name="index">/index.jsp</result>
+			<result name="invalid.token">/index.jsp</result>
+			<interceptor-ref name="token"></interceptor-ref>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+		</action>
+		
+		<!-- goods -->
+		<action name="goods_*" class="goodsAction" method="{1}">
+			<result name="index">/index.jsp</result>
+		</action>
+		
+		<!-- orders -->
+		<action name="orders_*" class="ordersAction" method="{1}">
+			<result name="shoppingCar">/WEB-INF/shoppingCar/shoppingCar.jsp</result>
+			<result name="accounts">/WEB-INF/accounts/accounts.jsp</result>
+			<result name="success">/accountSuccess.jsp</result>
+			<result name="CheckOrders">/WEB-INF/orders/checkOrders.jsp</result>
+		</action>
+		
+		<!-- manager -->
+		<action name="manager_*" class="managerAction" method="{1}">
+			<result name="login">/WEB-INF/manager/managerLogin.jsp</result>
+			<result name="index">/WEB-INF/manager/managerIndex.jsp</result>
+			<result name="backToAdd" type="redirectAction">/manager_toAdd.action</result>
+			<result name="backToList" type="redirectAction">/manager_toList.action</result>
+		</action>
+		
+		<!-- managertoken -->
+		<action name="managertoken_*" class="managerAction" method="{1}">
+			<result name="index">/WEB-INF/manager/managerIndex.jsp</result>
+			<result name="login">/WEB-INF/manager/managerLogin.jsp</result>
+			<result name="invalid.token">/WEB-INF/manager/managerIndex.jsp</result>
+			<interceptor-ref name="token"></interceptor-ref>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+		</action>
+		
+		<!-- goodsManager -->
+		<action name="goodsmanager_*" class="goodsManageAction" method="{1}">
+			<result name="index">/WEB-INF/manager/managerIndex.jsp</result>
+			<result name="backToAdd" type="redirectAction">/goodsmanager_toAddGoods.action</result>
+			<result name="backToGoodsList" type="redirectAction">/goodsmanager_toGoodsList.action</result>
+		</action>
+		
+		<!-- ordersManager -->
+		<action name="ordersmanager_*" class="ordersManageAction" method="{1}">
+			<result name="index">/WEB-INF/manager/managerIndex.jsp</result>
+			<result name="backToList" type="redirectAction">/ordersmanager_toList.action</result>
+			<result name="ordersDetails">/manager/ordersDetails.jsp</result>
+		</action>
+		
+		<!-- notice -->
+		<action name="notice_*" class="noticeAction" method="{1}">
+			<result name="index">/WEB-INF/manager/managerIndex.jsp</result>
+			<result name="backToAdd" type="redirectAction">/notice_toAdd.action</result>
+			<result name="backToList" type="redirectAction">/notice_toList.action</result>
+		</action>
+	</package>
+	
+	<!-- json -->
+	<package name="demo2" extends="json-default">
+		<!-- customer -->
+		<action name="customerjson_*" class="customerAction" method="{1}">
+			<result name="flag" type="json">
+				<param name="root">flag</param>
+			</result>
+			<result name="customerListLimit" type="json">
+				<param name="root">customerListLimit</param>
+			</result>
+			<result name="queryList" type="json">
+				<param name="root">queryList</param>
+			</result>
+		</action>
+	
+		<!-- goods -->
+		<action name="goodsjson_*" class="goodsAction" method="{1}">
+			<result name="goodsList" type="json">
+				<param name="root">goodsList</param>
+			</result>
+		</action>
+		
+		<!-- orders -->
+		<action name="ordersjson_*" class="ordersAction" method="{1}">
+			<result name="flag" type="json">
+				<param name="root">flag</param>
+			</result>
+			<result name="strs" type="json">
+				<param name="root">strs</param>
+			</result>
+		</action>
+		
+		<!-- goodsManager -->
+		<action name="goodsmanagerjson_*" class="goodsManageAction" method="{1}">
+			<result name="allGoodsTypes" type="json">
+				<param name="root">allGoodsTypes</param>
+			</result>
+			<result name="allGoods" type="json">
+				<param name="root">allGoods</param>
+			</result>
+			<result name="goods2" type="json">
+				<param name="root">goods2</param>
+			</result>
+			<result name="limitgoods" type="json">
+				<param name="root">limitgoods</param>
+			</result>
+		</action>
+		
+		<!-- manager -->
+		<action name="managerjson_*" class="managerAction" method="{1}">
+			<result name="managerList" type="json">
+				<param name="root">managerList</param>
+			</result>
+			<result name="prevInfo" type="json">
+				<param name="root">prevInfo</param>
+			</result>
+		</action>
+		
+		<!-- ordersManager -->
+		<action name="ordersmanagerjson_*" class="ordersManageAction" method="{1}">
+			<result name="ordersList" type="json">
+				<param name="root">ordersList</param>
+			</result>
+		</action>
+		
+		<!-- notice -->
+		<action name="noticejson_*" class="noticeAction" method="{1}">
+			<result name="notices" type="json">
+				<param name="root">notices</param>
+			</result>
+			<result name="notice2" type="json">
+				<param name="root">notice2</param>
+			</result>
+			<result name="notices2" type="json">
+				<param name="root">notices2</param>
+			</result>
+		</action>
+	</package>
+</struts>

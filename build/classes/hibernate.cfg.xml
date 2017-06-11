@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+	"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+	
+<hibernate-configuration>
+	<session-factory>
+		
+		<!-- 1、配置hibermate信息（可选） -->
+		<!-- hibermate自动创建表
+				update：如果已经有对应的表，则更新 ；如果没有，则自动创建-->
+		<property name="hibernate.hbm2ddl.auto">update</property>
+		
+		<!-- 配置数据库方言
+			以前在mysql里面实现分页的关键字limit，只能在mysql里面使用
+			此配置使得hibermate可以识别不同数据库自己特有的语句 -->
+		<property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+		
+		<!-- 不需要再写与本地线程绑定的session的配置了，因为hibernateTemplate中已经帮我们实现了 -->
+		
+		<!-- 2、把映射文件引入到核心配置文件中 -->
+		<mapping resource="entity/Customer.hbm.xml"/>
+		<mapping resource="entity/Goods.hbm.xml"/>
+		<mapping resource="entity/GoodsType.hbm.xml"/>
+		<mapping resource="entity/Manager.hbm.xml"/>
+		<mapping resource="entity/Notice.hbm.xml"/>
+		<mapping resource="entity/Orders.hbm.xml"/>
+		<mapping resource="entity/OrdersDetail.hbm.xml"/>
+		
+	</session-factory>
+</hibernate-configuration>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://www.springframework.org/schema/context
+	http://www.springframework.org/schema/context/spring-context.xsd
+	http://www.springframework.org/schema/aop
+	http://www.springframework.org/schema/aop/spring-aop.xsd
+	http://www.springframework.org/schema/tx
+	http://www.springframework.org/schema/tx/spring-tx.xsd">
+	
+	<!-- customer -->
+	<import resource="classpath:customerSpring.xml"/>
+	
+	<!-- goods -->
+	<import resource="classpath:goodsSpring.xml"/>
+	
+	<!-- ordersDetail -->
+	<import resource="classpath:ordersDetailSpring.xml"/>
+	
+	<!-- orders -->
+	<import resource="classpath:ordersSpring.xml"/>
+	
+	<!-- manager -->
+	<import resource="classpath:managerSpring.xml"/>
+	
+	<!-- goodsType -->
+	<import resource="classpath:goodsTypeSpring.xml"/>
+	
+	<!-- notice -->
+	<import resource="classpath:noticeSpring.xml"/>
+	
+	<!-- 配置c3p0连接池 -->
+	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+		<!-- 注入属性值 -->
+		<property name="driverClass" value="com.mysql.jdbc.Driver"></property>
+		<property name="jdbcUrl" value="jdbc:mysql://localhost:3306/store_online?characterEncoding=utf-8"></property>
+		<property name="user" value="root"></property>
+		<property name="password" value="286229825"></property>
+	</bean>
+	
+	<!-- 将SessionFactory对象的创建交给spring -->
+	<bean id="sessionFactory" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
+		<!-- 因为在hibernate核心配置文件已经没有数据库信息的配置了，在spring中配置了数据库信息，
+			所以在这里要注入datasource -->
+		<property name="dataSource" ref="dataSource"></property>
+		
+		<!-- 指定使用的hibernate核心配置文件。 -->
+		<property name="configLocations" value="classpath:hibernate.cfg.xml"></property>
+	</bean>
+	
+	<!-- 配置事务
+		第一步：配置事务管理器 -->
+	<bean id="transactionManager" class="org.springframework.orm.hibernate5.HibernateTransactionManager">
+		<!-- 注入sessionFactory，因为这里面就已经有dataSource -->
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<!-- 第二步：开启事务注解 -->
+	<tx:annotation-driven transaction-manager="transactionManager"/>
+	
+</beans>

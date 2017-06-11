@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+ 
+<hibernate-mapping>
+
+	<!-- 1、配置类和表对应：class 标签
+						name属性：实体类全路径
+						table属性：数据表 -->
+	<class name="entity.Customer" table="tb_customer">
+		<!-- 2、配置实体类 id 和表 id 对应
+				hibernate要求实体类有一个属性是唯一值
+				hibernate要求表有字段作为唯一值 -->
+				
+		<!-- id标签：
+				name属性：实体类里面id属性名称
+				colum属性：生成的表字段名称 -->
+		<id name="id" column="id">
+			<!-- 设置数据表id增长策略
+				native：设置生成表id值是主键自增长的 -->
+			<generator class="native"></generator>
+		</id>
+		
+		<!-- 3、配置实体类中其他属性和表字段对应
+				name属性：实体类里面id属性名称
+				colum属性：生成的表字段名称 -->
+		<property name="name" column="name"></property>
+		<property name="password" column="password"></property>
+		<property name="realName" column="realName"></property>
+		<property name="birthday" column="birthday"></property>
+		<property name="vocation" column="vocation"></property>
+		<property name="email" column="email"></property>
+		<property name="sex" column="sex"></property>
+		
+		<set name="setOrders" cascade="save-update,delete" inverse="true">
+			<key column="coId"></key>
+			<one-to-many class="entity.Orders"/>
+		</set>
+	</class>
+</hibernate-mapping>
