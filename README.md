@@ -3,6 +3,7 @@
 
 
 项目简介：
+
 前端框架使用的主要是easyui和jquery
 
 后端框架使用的主要是Spring4、Struts2、Hibernate5、shiro
@@ -18,6 +19,8 @@
 后台页面主要实现的是管理员、商品、订单、顾客、公告的 CRUD 操作；
 
 使用 shiro 整合 spring 来实现安全权限认证管理，系统主要分了两个角色（manager和customer），manager又有两个权限（simple和super），对于一些请求地址进行身份、角色、权限认证，没有通过认证就重定向到指定页面。
+
+
 
 
 ![image](https://github.com/286229825/StoreOL/blob/master/WebContent/readmePic/01.jpg)
