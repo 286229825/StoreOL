@@ -14,6 +14,7 @@
 			width:802,
 			singleSelect:true,
 			pagination:true,
+			fitColumns:true,
 			pageList:[10],
 			pageSize:10,
 			columns:[[
@@ -60,8 +61,6 @@
 <div style="margin-top:1%;font-weight:bold;float:left">
 	<font size="3">当前位置 ： 顾客管理 > 顾客列表</font>
 </div>
-<br>
-<br>
 <br>
 <br>
 <br>

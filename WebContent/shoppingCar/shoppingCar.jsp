@@ -42,6 +42,8 @@
 </script>
 </head>
 <body>
+<br>
+<br>
 <c:choose>
 	<c:when test="${!empty sessionScope.shoppingCar }">
 <center>

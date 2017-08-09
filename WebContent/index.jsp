@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>网上商城</title>
+<title>吾家商城首页</title>
 <link rel="stylesheet" type="text/css"
 	href="${pageContext.request.contextPath }/easyui/themes/default/easyui.css">
 <link rel="stylesheet" type="text/css"
@@ -52,40 +52,16 @@
 			alert("您还未登录，无法退出！");
 			return false;
 		});
-		$("#btn6").click(function(){
-			if(str2 == ""){
-				alert("您还未登录，请先登录！");
-				return false;
-			}
-			return true;
-		});
-		$("#btn5").click(function(){
-			if(str2 == ""){
-				alert("您还未登录，请先登录！");
-				return false;
-			}
-			return true;
-		});
-		$("#btn7").click(function(){
-			if(str2 == ""){
-				alert("您还未登录，请先登录！");
-				return false;
-			}
-			return true;
-		});
 	})
 </script>
 </head>
 <body class="easyui-layout"> 
 	<input id="hid" type="hidden" value="${requestScope.islogin }">   
 	<input id="hid2" type="hidden" value="${request.myurl }">   
-    <div data-options="region:'north'" style="height:140px;">  
-    	<div style="background:#ECF5FF;height:96px;">
-    		<br>
-    		<font face="仿宋" color="blue" size="60px" style="font-weight:bold;font-style:italic;margin-left:5%;">网 上 商 城 Store OnLine</font>
-    		<br>
-    		<font style="margin-left:85%" size="2">欢迎您，亲爱的</font>
-    		<font id="font3" size="2" color="red">${sessionScope.customerName }</font>
+    <div data-options="region:'north'" style="height:100px;">  
+    	<div style="background:#ECF5FF;height:56px;">
+    		<font face="仿宋" color="blue" size="10px" style="font-weight:bold;margin-left:3%;">吾 家 商 城 </font>
+    		<font style="margin-left:50%" size="2">欢迎您，亲爱的</font><font id="font3" size="2" color="red">${sessionScope.customerName }</font>
     	</div>
     	<div style="background:black;text-align:center;">
     		<a style="background:black" id="btn1" href="${pageContext.request.contextPath }/goods_toAllGoodsPage.action" class="easyui-linkbutton" data-options="width:60,size:'large'"><font color="white" size="3px">首页</font>
@@ -99,46 +75,43 @@
     	</div>
     </div> 
     
-    <div data-options="region:'south'" style="height:80px;background:#ECF5FF;">
-    	<center style="margin-top:1%">
-    	<font>CopyRight : www.xiaowu.com</font><br><br>
-    	<font>本站使用技术  : struts2、spring4、hibernate5</font>
-    	</center>
+    <div data-options="region:'south'" style="height:30px;background:#ECF5FF;">
+    	<div align="center" style="margin: 5px">
+    	<font>CopyRight © : www.xiaowu.com</font>
+    	</div>
     </div>
        
     <div data-options="region:'west'" style="width:200px;background:#CECEFF">
-    	<div id="p1" class="easyui-panel" style="width:197px;height:442px;background:#CECEFF;"   
+    	<div id="p1" class="easyui-panel" data-options="fit:true" style="background:#CECEFF;"   
         data-options="">   
    	 		<div style="background:#484891;font-size:20px;text-align:center"><font color="white">商品分类</font></div> 
-			<ul style="margin-left:20%;">
-				<li style="margin-top:5%"><a href="${pageContext.request.contextPath }/goods_toTypePage.action?typeId=1" style="text-decoration:none;"><font size="4" color="black" style="font-weight:bold" face="仿宋">书 籍</font></a></li>
-				<li style="margin-top:3%"><a href="${pageContext.request.contextPath }/goods_toTypePage.action?typeId=2" style="text-decoration:none;"><font size="4" color="black" style="font-weight:bold" face="仿宋">服 装</font></a></li>
-				<li style="margin-top:3%"><a href="${pageContext.request.contextPath }/goods_toTypePage.action?typeId=3" style="text-decoration:none;"><font size="4" color="black" style="font-weight:bold" face="仿宋">家 具</font></a></li>
-				<li style="margin-top:3%"><a href="${pageContext.request.contextPath }/goods_toTypePage.action?typeId=4" style="text-decoration:none;"><font size="4" color="black" style="font-weight:bold" face="仿宋">家 电</font></a></li>
-				<li style="margin-top:3%"><a href="${pageContext.request.contextPath }/goods_toTypePage.action?typeId=5" style="text-decoration:none;"><font size="4" color="black" style="font-weight:bold" face="仿宋">手 机</font></a></li>
-				<li style="margin-top:3%"><a href="${pageContext.request.contextPath }/goods_toTypePage.action?typeId=6" style="text-decoration:none;"><font size="4" color="black" style="font-weight:bold" face="仿宋">电 脑</font></a></li>
+			<ul style="margin-left:15%;">
+				<li style="margin-top:5%"><a href="${pageContext.request.contextPath }/goods_toTypePage.action?typeId=1" style="text-decoration:none;" class="easyui-linkbutton" data-options="plain:true"><font size="4" color="black" style="font-weight:bold" face="仿宋">书 籍</font></a></li>
+				<li style="margin-top:3%"><a href="${pageContext.request.contextPath }/goods_toTypePage.action?typeId=2" style="text-decoration:none;" class="easyui-linkbutton" data-options="plain:true"><font size="4" color="black" style="font-weight:bold" face="仿宋">服 装</font></a></li>
+				<li style="margin-top:3%"><a href="${pageContext.request.contextPath }/goods_toTypePage.action?typeId=3" style="text-decoration:none;" class="easyui-linkbutton" data-options="plain:true"><font size="4" color="black" style="font-weight:bold" face="仿宋">家 具</font></a></li>
+				<li style="margin-top:3%"><a href="${pageContext.request.contextPath }/goods_toTypePage.action?typeId=4" style="text-decoration:none;" class="easyui-linkbutton" data-options="plain:true"><font size="4" color="black" style="font-weight:bold" face="仿宋">家 电</font></a></li>
+				<li style="margin-top:3%"><a href="${pageContext.request.contextPath }/goods_toTypePage.action?typeId=5" style="text-decoration:none;" class="easyui-linkbutton" data-options="plain:true"><font size="4" color="black" style="font-weight:bold" face="仿宋">手 机</font></a></li>
+				<li style="margin-top:3%"><a href="${pageContext.request.contextPath }/goods_toTypePage.action?typeId=6" style="text-decoration:none;" class="easyui-linkbutton" data-options="plain:true"><font size="4" color="black" style="font-weight:bold" face="仿宋">电 脑</font></a></li>
 			</ul>
-			<div style="margin-top:90%;text-align:center">
-				<a href="${pageContext.request.contextPath }/manager_toLogin.action">管理员入口</a>
+			<div style="margin-top:50%;text-align:center">
+				<a href="${pageContext.request.contextPath }/manager_toLogin.action" class="easyui-linkbutton" data-options="plain:true">管理员入口</a>
 			</div>
 		</div> 
     </div>
     
     <div data-options="region:'east'" style="width:200px;background:#CECEFF">
-    	<div id="p3" class="easyui-panel" style="height:220px;width:198px;background:#CECEFF;"
-    	data-options="">
+    	<div id="p3" class="easyui-panel" style="background:#CECEFF;height:40%">
     		<div style="background:#484891;font-size:20px;text-align:center"><font color="white">顾客登录</font></div>
     		<form action="${pageContext.request.contextPath }/customertoken_login.action" method="post" style="margin-left:10%;margin-top:10%">
-				帐号：<input name="name" type="text" class="easyui-textbox" data-options="iconCls:'icon-man'" style="width:100px"><br><br>
-				密码：<input name="password" type="password" class="easyui-textbox" data-options="iconCls:'icon-lock'" style="width:100px"><br><br>
+				帐号：<input name="name" type="text" class="easyui-textbox" data-options="iconCls:'icon-man'" style="width:100px"><br>
+				密码：<input name="password" type="password" class="easyui-textbox" data-options="iconCls:'icon-lock'" style="width:100px"><br>
 				<input id="sign" type="button" onclick="window.open('${pageContext.request.contextPath}/signIn.jsp')" style="margin-left:10%" value="注册">
-				<input id="login" type="submit" style="margin-left:10%" value="登录"><br>
+				<input id="login" type="submit" style="margin-left:10%" value="登录" ><br>
 				<s:token></s:token>
 				<font color="red">${requestScope.message }</font>
 			</form>
     	</div>
-    	<div id="p4" class="easyui-panel" style="height:222px;width:198px;background:#CECEFF;"
-    	data-options="">
+    	<div id="p4" class="easyui-panel" style="background:#CECEFF;height: 60%">
     		<div style="background:#484891;font-size:20px;text-align:center"><font color="white">公告栏</font></div>
     		<div style="margin-top:10%;margin-buttom:10%">
     			<marquee id="mymarquee" onmouseout="this.start()" onmouseover="this.stop()" height="150px" direction="up" scrollamount="5">

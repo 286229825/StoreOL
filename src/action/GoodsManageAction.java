@@ -2,7 +2,6 @@ package action;
 
 import java.io.File;
 import java.io.IOException;
-import java.io.Serializable;
 import java.sql.Timestamp;
 import java.text.ParseException;
 import java.util.Date;
@@ -14,7 +13,6 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.apache.struts2.ServletActionContext;
 
-import com.mchange.v2.io.FileUtils;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 
@@ -24,6 +22,13 @@ import service.GoodsService;
 import service.GoodsTypeService;
 
 public class GoodsManageAction extends ActionSupport implements ModelDriven<Goods>{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	/**
+	 * 
+	 */
 	private GoodsService goodsService;
 	public void setGoodsService(GoodsService goodsService) {
 		this.goodsService = goodsService;
@@ -74,7 +79,7 @@ public class GoodsManageAction extends ActionSupport implements ModelDriven<Good
 		Timestamp timestamp=new Timestamp(new Date().getTime());
 		goods.setCreatTime(timestamp);
 		goods.setBuyTimes(0);
-		Serializable id = goodsService.addOne(goods);
+		goodsService.addOne(goods);
 		return "backToAdd";
 	}
 	

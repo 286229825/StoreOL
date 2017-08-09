@@ -12,11 +12,11 @@
 	http://www.springframework.org/schema/tx/spring-tx.xsd">
 	
 	<bean id="customerAction" class="action.CustomerAction" scope="prototype">
-		<property name="customerService" ref="customerService"></property>
+		<property name="customerService" ref="customerServiceImpl"></property>
 	</bean>
 	
-	<bean id="customerService" class="service.CustomerService">
-		<property name="customerDaoImpl" ref="customerDaoImpl"></property>
+	<bean id="customerServiceImpl" class="service.CustomerServiceImpl">
+		<property name="customerDao" ref="customerDaoImpl"></property>
 	</bean>
 	
 	<bean id="customerDaoImpl" class="dao.CustomerDaoImpl">

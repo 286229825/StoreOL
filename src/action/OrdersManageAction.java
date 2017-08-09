@@ -15,6 +15,13 @@ import entity.Orders;
 import service.OrdersService;
 
 public class OrdersManageAction extends ActionSupport implements ModelDriven<Orders> {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	/**
+	 * 
+	 */
 	private Orders orders=new Orders();
 	public Orders getModel() {
 		return orders;

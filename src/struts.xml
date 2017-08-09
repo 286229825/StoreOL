@@ -18,8 +18,8 @@
 			<result name="indexRedirect" type="redirect">/index.jsp</result>
 			<result name="success" type="redirect">/success.jsp</result>
 			<result name="successEdit" type="redirect">/successEdit.jsp</result>
-			<result name="editInfo">/WEB-INF/editInfo/editInfo.jsp</result>
-			<result name="Managerindex">/WEB-INF/manager/managerIndex.jsp</result>
+			<result name="editInfo">/editInfo/editInfo.jsp</result>
+			<result name="Managerindex">/manager/managerIndex.jsp</result>
 		</action>
 		
 		<!-- customer_token -->
@@ -37,46 +37,46 @@
 		
 		<!-- orders -->
 		<action name="orders_*" class="ordersAction" method="{1}">
-			<result name="shoppingCar">/WEB-INF/shoppingCar/shoppingCar.jsp</result>
-			<result name="accounts">/WEB-INF/accounts/accounts.jsp</result>
+			<result name="shoppingCar">/shoppingCar/shoppingCar.jsp</result>
+			<result name="accounts">/accounts/accounts.jsp</result>
 			<result name="success">/accountSuccess.jsp</result>
-			<result name="CheckOrders">/WEB-INF/orders/checkOrders.jsp</result>
+			<result name="CheckOrders">/orders/checkOrders.jsp</result>
 		</action>
 		
 		<!-- manager -->
 		<action name="manager_*" class="managerAction" method="{1}">
-			<result name="login">/WEB-INF/manager/managerLogin.jsp</result>
-			<result name="index">/WEB-INF/manager/managerIndex.jsp</result>
+			<result name="login">/manager/managerLogin.jsp</result>
+			<result name="index">/manager/managerIndex.jsp</result>
 			<result name="backToAdd" type="redirectAction">/manager_toAdd.action</result>
 			<result name="backToList" type="redirectAction">/manager_toList.action</result>
 		</action>
 		
 		<!-- managertoken -->
 		<action name="managertoken_*" class="managerAction" method="{1}">
-			<result name="index">/WEB-INF/manager/managerIndex.jsp</result>
-			<result name="login">/WEB-INF/manager/managerLogin.jsp</result>
-			<result name="invalid.token">/WEB-INF/manager/managerIndex.jsp</result>
+			<result name="index">/manager/managerIndex.jsp</result>
+			<result name="login">/manager/managerLogin.jsp</result>
+			<result name="invalid.token">/manager/managerIndex.jsp</result>
 			<interceptor-ref name="token"></interceptor-ref>
 			<interceptor-ref name="defaultStack"></interceptor-ref>
 		</action>
 		
 		<!-- goodsManager -->
 		<action name="goodsmanager_*" class="goodsManageAction" method="{1}">
-			<result name="index">/WEB-INF/manager/managerIndex.jsp</result>
+			<result name="index">/manager/managerIndex.jsp</result>
 			<result name="backToAdd" type="redirectAction">/goodsmanager_toAddGoods.action</result>
 			<result name="backToGoodsList" type="redirectAction">/goodsmanager_toGoodsList.action</result>
 		</action>
 		
 		<!-- ordersManager -->
 		<action name="ordersmanager_*" class="ordersManageAction" method="{1}">
-			<result name="index">/WEB-INF/manager/managerIndex.jsp</result>
+			<result name="index">/manager/managerIndex.jsp</result>
 			<result name="backToList" type="redirectAction">/ordersmanager_toList.action</result>
 			<result name="ordersDetails">/manager/ordersDetails.jsp</result>
 		</action>
 		
 		<!-- notice -->
 		<action name="notice_*" class="noticeAction" method="{1}">
-			<result name="index">/WEB-INF/manager/managerIndex.jsp</result>
+			<result name="index">/manager/managerIndex.jsp</result>
 			<result name="backToAdd" type="redirectAction">/notice_toAdd.action</result>
 			<result name="backToList" type="redirectAction">/notice_toList.action</result>
 		</action>

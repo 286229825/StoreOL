@@ -41,24 +41,23 @@ function myajax(page){
 			$("#font2").text(data.totalPage);
 			$.each(data.rows,function(index,content){
 				if(content.salePrice > 0){
-					var str="<div style='float:left;margin:10px;width:200px;height:350px'>"+
-						"<a href='#' onclick='buyIt("+content.id+")'><img src='image/"+content.pictrue+"'></a>"+
-						"<br><br><div>商品名称："+content.name+"</div>"+
+					var str="<div style='float:left;margin:6px;width:200px;height:350px'>"+
+						"<div><a href='#' onclick='buyIt("+content.id+")'><img src='image/"+content.pictrue+"'></a></div>"+
+						"<br><div>商品名称："+content.name+"</div>"+
 						"<div>商品产地："+content.goodFrom+"</div>"+
 						"<div>商品简介："+content.introduce+"</div>"+
 						"<div>商品价格："+content.nowPrice+"</div>"+
 						"<div><font color='red'>商品特价："+content.salePrice+"</font></div>"+
-						"</div>"+"&nbsp;&nbsp;";
+						"</div>"+"&nbsp;";
 					$("#p").after(str);
 				}else{
-					var str="<div style='float:left;margin:10px;width:200px;height:350px'>"+
-						"<a href='#' onclick='buyIt("+content.id+")'><img src='image/"+content.pictrue+"'></a>"+
-						"<br><br><div>商品名称："+content.name+"</div>"+
+					var str="<div style='float:left;margin:6px;width:200px;height:350px'>"+
+						"<div><a href='#' onclick='buyIt("+content.id+")'><img src='image/"+content.pictrue+"'></a></div>"+
+						"<br><div>商品名称："+content.name+"</div>"+
 						"<div>商品产地："+content.goodFrom+"</div>"+
 						"<div>商品简介："+content.introduce+"</div>"+
 						"<div>商品售价："+content.nowPrice+"</div>"+
-						"<div></div>"+
-						"</div>"+"&nbsp;&nbsp;";
+						"</div>"+"&nbsp;";
 					$("#p").after(str);
 				}
 			})
@@ -116,11 +115,11 @@ function toWhichPage(){
 
 <div style="float:left;margin-left:35%">
 	<br>
-	<a id="a1" href="" style="text-decoration:none">上一页</a>&nbsp;&nbsp;&nbsp;&nbsp;
+	<a id="a1" href="" style="text-decoration:none" class="easyui-linkbutton">上一页</a>&nbsp;&nbsp;&nbsp;&nbsp;
 	当前第&nbsp;<font id="font1" color="red">${param.page }</font>&nbsp;页，共&nbsp;<font id="font2" color="red"></font>&nbsp;页&nbsp;&nbsp;&nbsp;&nbsp;
-	<a id="a2" href="" style="text-decoration:none">下一页</a>&nbsp;&nbsp;&nbsp;&nbsp;
+	<a id="a2" href="" style="text-decoration:none" class="easyui-linkbutton">下一页</a>&nbsp;&nbsp;&nbsp;&nbsp;
 	到第&nbsp;<input id="input1" style="width:20px" type="text">&nbsp;页
-	<button id="btn1" type="button" onclick="toWhichPage()">确定</button>
+	<button id="btn1" type="button" onclick="toWhichPage()" class="easyui-linkbutton">确定</button>
 </div>
 </body>
 </html>

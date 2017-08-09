@@ -5,7 +5,6 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
-import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -24,17 +23,19 @@ import entity.Orders;
 import entity.OrdersDetail;
 import service.CustomerService;
 import service.GoodsService;
-import service.OrdersDetailService;
 import service.OrdersService;
 
 public class OrdersAction extends ActionSupport{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	/**
+	 * 
+	 */
 	private OrdersService ordersService;
 	public void setOrdersService(OrdersService ordersService) {
 		this.ordersService = ordersService;
-	}
-	private OrdersDetailService ordersDetailService;
-	public void setOrdersDetailService(OrdersDetailService ordersDetailService) {
-		this.ordersDetailService = ordersDetailService;
 	}
 	private GoodsService goodsService;
 	public void setGoodsService(GoodsService goodsService) {

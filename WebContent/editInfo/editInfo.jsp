@@ -166,6 +166,11 @@
 			</tr>
 		</table>
 	</form>
+	<br>
+	<br>
+	<a href="${pageContext.request.contextPath }/index.jsp" class="easyui-linkbutton" data-options="iconCls:'icon-back'">回 到 首 页</a>
+	<br>
+	<br>
 </center>
 </body>
 </html>

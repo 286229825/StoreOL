@@ -15,6 +15,7 @@
 			pagination:true,
 			pageList:[5],
 			pageSize:5,
+			fitColumns:true,
 			url:'/StoreOL/goodsmanagerjson_getGoodsList.action',
 			columns:[[
 				{
@@ -74,7 +75,7 @@
 					align:'center',
 					width:100,
 					formatter:function(value){
-						var str="<img src='image/"+value+"' width='60px' height='60px'>";
+						var str="<img src='image/"+value+"' width='50px' height='50px'>";
 						return str;
 					}
 				},

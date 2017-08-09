@@ -18,5 +18,8 @@ public class ManagerDaoImpl extends BaseDaoImpl<Manager> implements ManagerDao {
 		List<Manager> list=(List<Manager>) super.getHibernateTemplate().findByCriteria(criteria, (page-1)*rows, rows);
 		return list;
 	}
-
+	
+	public List<Manager> findOneByName(String name) {
+		return (List<Manager>) super.getHibernateTemplate().find("from Manager where name=?", name);
+	}
 }

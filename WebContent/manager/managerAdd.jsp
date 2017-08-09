@@ -43,8 +43,6 @@
 <br>
 <br>
 <br>
-<br>
-<br>
 <center>
 <form action="${pageContext.request.contextPath }/manager_add.action" method="post">
 	<table cellpadding="10px">

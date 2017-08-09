@@ -13,6 +13,8 @@
 			url:'/StoreOL/goodsmanagerjson_getAllTypes.action',
 			textField:'type',
 			valueField:'id',
+			panelHeight:'auto',
+			width:60
 		});
 		
 		$("#begindate").datebox({    
@@ -158,31 +160,27 @@
 		});
 	})
 </script>
-<div style="margin-top:1%;font-weight:bold;float:left">
+<div style="margin-top:1%;font-weight:bold">
 	<font size="3">当前位置 ： 商品管理 > 商品查询</font>
 </div>
-<center>
-<form style="margin-top:3%">
-	<table cellpadding="3px">
-		<tr>
-			<td>商品名称：</td>
-			<td><input id="goodsname" type="text" name="name"></td>
-			<td>商品产地：<input id="goodsfrom" type="text" name="goodFrom"></td>
-			<td>商品类型：<input id="goodstype" name="goodsType.id"></td>
-			<td>商品价格：<input id="price1" style="width:40px" type="text" name="nowPrice">
-			--&nbsp;<input id="price2" style="width:40px" type="text" name="nowPrice"></td>
-		</tr>
-		<tr>
-			<td>创建时间：</td>
-			<td colspan="2">&nbsp;&nbsp;从<input id="begindate" type="text" class="easyui-datebox"></input>&nbsp;&nbsp;
-			-到<input id="lastdate" type="text" class="easyui-datebox"></input>
-			</td>
-			<td><input type="reset" value="重置"></td>
-			<td><button id="butn" type="button" style="background:yellow;width:60px;height:40px;font-size:20px">查询</button></td>
-		</tr>
-	</table>
-</form>
+<div style="margin-top:1%">
+<table>
+	<tr>
+		<td align="center">商品名称：<input id="goodsname" type="text" name="name" style="width:60px"></td>
+		<td align="center">商品产地：<input id="goodsfrom" type="text" name="goodFrom" style="width:60px"></td>
+		<td align="center">商品类型：<input id="goodstype" name="goodsType.id"></td>
+		<td align="center">商品价格：<input id="price1" style="width:40px" type="text" name="nowPrice">
+		--<input id="price2" style="width:40px" type="text" name="nowPrice"></td>
+	</tr>
+	<tr>
+		<td colspan="2" align="center">创建时间：从<input id="begindate" type="text" class="easyui-datebox"></input>
+		-到<input id="lastdate" type="text" class="easyui-datebox"></input>
+		</td>
+		<td align="center"><input type="reset" value="重置"></td>
+		<td align="center"><button id="butn" type="button" style="background:yellow;width:60px;height:40px;font-size:20px">查询</button></td>
+	</tr>
+</table>
+</div>
 <table id="tt"></table>
-</center>
 </body>
 </html>

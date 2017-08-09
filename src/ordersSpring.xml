@@ -12,18 +12,17 @@
 	http://www.springframework.org/schema/tx/spring-tx.xsd">
 	
 	<bean id="ordersAction" class="action.OrdersAction" scope="prototype">
-		<property name="ordersService" ref="ordersService"></property>
-		<property name="ordersDetailService" ref="ordersDetailService"></property>
-		<property name="goodsService" ref="goodsService"></property>
-		<property name="customerService" ref="customerService"></property>
+		<property name="ordersService" ref="ordersServiceImpl"></property>
+		<property name="goodsService" ref="goodsServiceImpl"></property>
+		<property name="customerService" ref="customerServiceImpl"></property>
 	</bean>
 	
 	<bean id="ordersManageAction" class="action.OrdersManageAction" scope="prototype">
-		<property name="ordersService" ref="ordersService"></property>
+		<property name="ordersService" ref="ordersServiceImpl"></property>
 	</bean>
 	
-	<bean id="ordersService" class="service.OrdersService">
-		<property name="ordersDaoImpl" ref="ordersDaoImpl"></property>
+	<bean id="ordersServiceImpl" class="service.OrdersServiceImpl">
+		<property name="ordersDao" ref="ordersDaoImpl"></property>
 	</bean>
 	<bean id="ordersDaoImpl" class="dao.OrdersDaoImpl">
 		<property name="sessionFactory" ref="sessionFactory"></property>

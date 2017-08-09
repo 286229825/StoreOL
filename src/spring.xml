@@ -17,9 +17,6 @@
 	<!-- goods -->
 	<import resource="classpath:goodsSpring.xml"/>
 	
-	<!-- ordersDetail -->
-	<import resource="classpath:ordersDetailSpring.xml"/>
-	
 	<!-- orders -->
 	<import resource="classpath:ordersSpring.xml"/>
 	
@@ -31,6 +28,9 @@
 	
 	<!-- notice -->
 	<import resource="classpath:noticeSpring.xml"/>
+	
+	<!-- role -->
+	<import resource="classpath:roleSpring.xml"/>
 	
 	<!-- 配置c3p0连接池 -->
 	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
@@ -50,6 +50,54 @@
 		<!-- 指定使用的hibernate核心配置文件。 -->
 		<property name="configLocations" value="classpath:hibernate.cfg.xml"></property>
 	</bean>
+	
+	<!-- 配置自定义Realm的 bean -->
+	<bean id="myRealm" class="realm.MyRealm">
+		<property name="roleService" ref="roleServiceImpl"></property>
+	</bean>
+	
+	<!-- 配置shiro的安全管理器 -->
+	<bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
+		<property name="realm" ref="myRealm"></property>
+	</bean>
+	
+	<!-- 配置shiro过滤器 -->
+	<bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
+		<!-- shiro的核心安全接口，这个属性是必须的 -->
+		<property name="securityManager" ref="securityManager"></property>
+		<!-- 身份认证失败，则跳转到登录页面的配置 -->
+		<property name="loginUrl" value="/index.jsp"></property>
+		<!-- 权限认证失败，则跳转到指定页面 -->
+		<property name="unauthorizedUrl" value="/manager/managerIndex.jsp"></property>
+		<!-- shiro连接约束配置 -->
+		<property name="filterChainDefinitions">
+			<value>
+				/index*=anon
+				/orders_toCheckOrders*=roles[customer]
+				/orders_toShopingCar*=roles[customer]
+				/customer_toeditInfo*=roles[customer]
+				/manager/*=roles[manager]
+				/goodsmanager_toAddGoods*=roles[manager]
+				/goodsmanager_toGoodsList*=roles[manager]
+				/goodsmanager_toQueryList*=roles[manager]
+				/customer_toList*=roles[manager]
+				/customer_toQuery*=roles[manager]
+				/notice_toAdd*=roles[manager]
+				/notice_toList*=roles[manager]
+				/manager_toList*=perms[super]
+				/manager_toAdd*=perms[super]
+			</value>
+		</property>
+	</bean>
+	
+	<!-- 保证实现了Shiro内部lifecycle函数的bean执行 -->  
+	<bean id="lifecycleBeanPostProcessor" class="org.apache.shiro.spring.LifecycleBeanPostProcessor"/>  
+	
+	<!-- 开启Shiro注解 -->
+	<bean class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator" depends-on="lifecycleBeanPostProcessor"/>  
+  	<bean class="org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor">  
+  	  	<property name="securityManager" ref="securityManager"/>  
+    </bean>
 	
 	<!-- 配置事务
 		第一步：配置事务管理器 -->

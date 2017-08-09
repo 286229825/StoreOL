@@ -64,7 +64,7 @@
 <div style="margin-top:5%">
 <center>
 	<form action="${pageContext.request.contextPath }/goodsmanager_addGoods.action" method="post" enctype="multipart/form-data">
-		<table cellpadding="10px">
+		<table cellpadding="5px">
 			<tr>
 				<td>商品名称：</td>
 				<td><input type="text" name="name"></td>

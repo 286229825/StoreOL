@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>查看订单</title>
 </head>
 <body>
 <center>
@@ -48,6 +48,9 @@
 	<br>
 	<br>
 </c:forEach>
+	<a href="${pageContext.request.contextPath }/index.jsp">回 到 首 页</a>
+	<br>
+	<br>
 </center>
 </body>
 </html>

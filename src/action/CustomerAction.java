@@ -1,6 +1,5 @@
 package action;
 
-import java.io.Serializable;
 import java.text.ParseException;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -9,19 +8,31 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.authc.UsernamePasswordToken;
+import org.apache.shiro.subject.Subject;
 import org.apache.struts2.ServletActionContext;
 
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 
 import entity.Customer;
+import service.CustomerServiceImpl;
 import service.CustomerService;
 
 public class CustomerAction extends ActionSupport implements ModelDriven<Customer>{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	/**
+	 * 
+	 */
 	private Customer customer = new Customer();
 	public Customer getModel() {
 		return customer;
 	}
+	
 	private CustomerService customerService;
 	public void setCustomerService(CustomerService customerService) {
 		this.customerService = customerService;
@@ -29,22 +40,41 @@ public class CustomerAction extends ActionSupport implements ModelDriven<Custome
 	
 	//登录验证
 	public String login() {
-		List<Customer> list = customerService.findOne(customer);
+//		List<Customer> list = customerService.findOne(customer);
+//		HttpServletRequest request=ServletActionContext.getRequest();
+//		HttpSession session=request.getSession();
+//		String name=(String) session.getAttribute("customerName");
+//		if(name != null) {
+//			session.removeAttribute("shoppingCar");
+//			session.removeAttribute("totalMoney");
+//		}
+//		if(list != null && list.size()>0) {
+//			Customer customer2=list.get(0);
+//			session.setAttribute("customerName", customer2.getName());
+//			request.setAttribute("islogin", "登录成功，现在开始购物吧！");
+//			return "index";
+//		}
+//		request.setAttribute("message", "对不起，帐号或密码错误！");
+//		return "index";
 		HttpServletRequest request=ServletActionContext.getRequest();
 		HttpSession session=request.getSession();
-		String name=(String) session.getAttribute("customerName");
-		if(name != null) {
-			session.removeAttribute("shoppingCar");
-			session.removeAttribute("totalMoney");
-		}
-		if(list != null && list.size()>0) {
-			Customer customer2=list.get(0);
-			session.setAttribute("customerName", customer2.getName());
+		Subject subject = SecurityUtils.getSubject();
+		UsernamePasswordToken token=new UsernamePasswordToken(customer.getName(), customer.getPassword());
+		try {
+			subject.login(token);
+			String name=(String) session.getAttribute("customerName");
+			if(name != null) {
+				session.removeAttribute("shoppingCar");
+				session.removeAttribute("totalMoney");
+			}
+			List<Customer> list = customerService.findOne(customer);
+			session.setAttribute("customerName", list.get(0).getName());
 			request.setAttribute("islogin", "登录成功，现在开始购物吧！");
 			return "index";
+		} catch (Exception e) {
+			request.setAttribute("message", "对不起，帐号或密码错误！");
+			return "index";
 		}
-		request.setAttribute("message", "对不起，帐号或密码错误！");
-		return "index";
 	}
 	
 	//校验登录名是否存在
@@ -69,7 +99,7 @@ public class CustomerAction extends ActionSupport implements ModelDriven<Custome
 	
 	//注册
 	public String signIn() {
-		Serializable id = customerService.addOne(customer);
+		customerService.addOne(customer);
 		return "success";
 	}
 	
@@ -79,6 +109,8 @@ public class CustomerAction extends ActionSupport implements ModelDriven<Custome
 		request.getSession().removeAttribute("customerName");
 		request.getSession().removeAttribute("shoppingCar");
 		request.getSession().removeAttribute("totalMoney");
+		Subject subject = SecurityUtils.getSubject();
+		subject.logout();
 		return "indexRedirect";
 	}
 	

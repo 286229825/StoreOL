@@ -1,6 +1,5 @@
 package dao;
 
-import java.io.Serializable;
 import java.sql.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -18,7 +17,8 @@ public class CustomerDaoImpl extends BaseDaoImpl<Customer> implements CustomerDa
 	}
 
 	public List<Customer> getOneByName(String customerName) {
-		return (List<Customer>) super.getHibernateTemplate().find("from Customer where name=?", customerName);
+		List<Customer> list = (List<Customer>) super.getHibernateTemplate().find("from Customer where name=?", customerName);
+		return list;
 	}
 
 	public List<Customer> getAllByLimit(int page, int rows) {

@@ -13,12 +13,19 @@ import com.opensymphony.xwork2.ModelDriven;
 
 import entity.Notice;
 import service.NoticeService;
+import service.NoticeServiceImpl;
 
 public class NoticeAction extends ActionSupport implements ModelDriven<Notice>{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private Notice notice=new Notice();
 	public Notice getModel() {
 		return notice;
 	}
+	
 	private NoticeService noticeService;
 	public void setNoticeService(NoticeService noticeService) {
 		this.noticeService = noticeService;

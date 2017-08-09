@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>网上商城-后台管理</title>
+<title>吾家商城-后台管理</title>
 <link rel="stylesheet" type="text/css"
 	href="${pageContext.request.contextPath }/easyui/themes/default/easyui.css">
 <link rel="stylesheet" type="text/css"
@@ -24,42 +24,28 @@ $(function(){
 	}else{
 		$("#aaa").hide();
 	}
-	$("#aa").accordion({
-		multiple:true,
-		border:false,
-	})
-	$("#manager").children().click(function(){
-		var level = $("#hidd1").val();
-		if(level == "super"){
-			return true;
-		}
-		alert("您没有权限访问此模块！");
-		return false;
-	})
-
 })
 </script>
 </head>
 <body class="easyui-layout">
 <input type="hidden" id="hidd1" value="${sessionScope.managerLevel }">
-	<div data-options="region:'north'" style="height:100px">
-		<div style="font-weight:bold;font-style:italic;font-size:50px;margin-top:1%;margin-left:2%">
-			<font color="blue" face="仿宋">网 上 商 城 - 后 台 管 理</font>
+	<div data-options="region:'north'" style="height:80px">
+		<div style="font-weight:bold;font-size:40px;margin-top:1%;margin-left:2%">
+			<font color="blue" face="仿宋">吾 家 商 城 - 后 台 管 理</font>
 		</div>
 		<font style="margin-left:80%">欢迎您：<font id="managerName" color="red">${sessionScope.managerName }</font>
 		&nbsp;&nbsp;&nbsp;&nbsp;<a id="aaa" href="${pageContext.request.contextPath }/manager_logout.action">退出登录</a></font>
 	</div>
 	
-	<div data-options="region:'south'" style="height:100px">
-		<center style="margin-top:2%">
+	<div data-options="region:'south'" style="height:40px">
+		<center style="margin-top:1%">
     		<font>CopyRight : www.xiaowu.com</font><br><br>
-    		<font>本站使用技术  : struts2、spring4、hibernate5</font>
     	</center>
 	</div>
 	
-	<div data-options="region:'west'" style="width:200px">
-		<div id="aa" class="easyui-accordion" style="width:198px;">   
-    		<div data-options="halign:'center'" align="center" title="商品管理" style="padding:10px;">   
+	<div data-options="region:'west',title:'后台管理菜单栏',split:true"  style="width:200px">
+		<div id="aa" class="easyui-accordion"  data-options="border:false,fit:true">   
+    		<div align="center" title="商品管理" style="padding:10px;">   
         		<a href="${pageContext.request.contextPath }/goodsmanager_toAddGoods.action">添加商品</a><br><br>
         		<a href="${pageContext.request.contextPath }/goodsmanager_toGoodsList.action">商品列表</a><br><br>
         		<a href="${pageContext.request.contextPath }/goodsmanager_toQueryList.action">商品查询</a>

@@ -53,8 +53,6 @@
 <br>
 <br>
 <br>
-<br>
-<br>
 <center>
 	<table id="tt"></table>
 </center>

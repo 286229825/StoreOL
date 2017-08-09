@@ -14,6 +14,7 @@
 			width:1122,
 			singleSelect:true,
 			pagination:true,
+			fitColumns:true,
 			pageSize:10,
 			pageList:[10],
 			columns:[[

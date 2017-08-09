@@ -12,11 +12,11 @@
 	http://www.springframework.org/schema/tx/spring-tx.xsd">
 	
 	<bean id="noticeAction" class="action.NoticeAction" scope="prototype">
-		<property name="noticeService" ref="noticeService"></property>
+		<property name="noticeService" ref="noticeServiceImpl"></property>
 	</bean>
 	
-	<bean id="noticeService" class="service.NoticeService">
-		<property name="noticeDaoImpl" ref="noticeDaoImpl"></property>
+	<bean id="noticeServiceImpl" class="service.NoticeServiceImpl">
+		<property name="noticeDao" ref="noticeDaoImpl"></property>
 	</bean>
 	
 	<bean id="noticeDaoImpl" class="dao.NoticeDaoImpl">

@@ -6,6 +6,10 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.authc.UsernamePasswordToken;
+import org.apache.shiro.session.Session;
+import org.apache.shiro.subject.Subject;
 import org.apache.struts2.ServletActionContext;
 
 import com.opensymphony.xwork2.ActionSupport;
@@ -15,6 +19,13 @@ import entity.Manager;
 import service.ManagerService;
 
 public class ManagerAction extends ActionSupport implements ModelDriven<Manager>{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	/**
+	 * 
+	 */
 	private ManagerService managerService;
 	public void setManagerService(ManagerService managerService) {
 		this.managerService = managerService;
@@ -31,16 +42,31 @@ public class ManagerAction extends ActionSupport implements ModelDriven<Manager>
 	
 	//登录
 	public String login() {
+//		HttpServletRequest request=ServletActionContext.getRequest();
+//		List<Manager> list = managerService.findOne(manager);
+//		if(list !=null && list.size()>0) {
+//			Manager manager2=list.get(0);
+//			request.getSession().setAttribute("managerName", manager2.getName());
+//			request.getSession().setAttribute("managerLevel", manager2.getLevel());
+//			return "index";
+//		}
+//		request.setAttribute("error", "登陆账号或登录密码错误！");
+//		return "login";
+		
 		HttpServletRequest request=ServletActionContext.getRequest();
-		List<Manager> list = managerService.findOne(manager);
-		if(list !=null && list.size()>0) {
+		Subject subject=SecurityUtils.getSubject();
+		UsernamePasswordToken token=new UsernamePasswordToken(manager.getName(), manager.getPassword());
+		try {
+			subject.login(token);
+			List<Manager> list = managerService.findOne(manager);
 			Manager manager2=list.get(0);
 			request.getSession().setAttribute("managerName", manager2.getName());
 			request.getSession().setAttribute("managerLevel", manager2.getLevel());
 			return "index";
+		} catch (Exception e) {
+			request.setAttribute("error", "登陆账号或登录密码错误！");
+			return "login";
 		}
-		request.setAttribute("error", "登陆账号或登录密码错误！");
-		return "login";
 	}
 	
 	//退出登录
@@ -48,6 +74,8 @@ public class ManagerAction extends ActionSupport implements ModelDriven<Manager>
 		HttpServletRequest request=ServletActionContext.getRequest();
 		request.getSession().removeAttribute("managerName");
 		request.getSession().removeAttribute("managerLevel");
+		Subject subject = SecurityUtils.getSubject();
+		subject.logout();
 		return "login";
 	}
 	

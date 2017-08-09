@@ -11,8 +11,8 @@
 	http://www.springframework.org/schema/tx
 	http://www.springframework.org/schema/tx/spring-tx.xsd">
 	
-	<bean id="goodsTypeService" class="service.GoodsTypeService">
-		<property name="goodsTypeDaoImpl" ref="goodsTypeDaoImpl"></property>
+	<bean id="goodsTypeServiceImpl" class="service.GoodsTypeServiceImpl">
+		<property name="goodsTypeDao" ref="goodsTypeDaoImpl"></property>
 	</bean>
 	
 	<bean id="goodsTypeDaoImpl" class="dao.GoodsTypeDaoImpl">

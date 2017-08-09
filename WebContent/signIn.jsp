@@ -84,7 +84,7 @@
 <br>
 <center>
 	<form action="${pageContext.request.contextPath}/customer_signIn.action" method="post">
-		<table cellpadding="10">
+		<table cellpadding="10px">
 			<tr>
 				<td>登录名</td>
 				<td><input class="input1" name="name" id="each" type="text" style="width:175px"></td>

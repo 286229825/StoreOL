@@ -11,12 +11,9 @@
 	http://www.springframework.org/schema/tx
 	http://www.springframework.org/schema/tx/spring-tx.xsd">
 	
-	<bean id="ordersDetailService" class="service.OrdersDetailService">
-		<property name="ordersDetailDaoImpl" ref="ordersDetailDaoImpl"></property>
-	</bean>
-	
-	<bean id="ordersDetailDaoImpl" class="dao.OrdersDetailDaoImpl">
-		<property name="sessionFactory" ref="sessionFactory"></property>
+	<bean id="roleServiceImpl" class="service.RoleServiceImpl">
+		<property name="customerService" ref="customerServiceImpl"></property>
+		<property name="managerService" ref="managerServiceImpl"></property>
 	</bean>
 	
 </beans>

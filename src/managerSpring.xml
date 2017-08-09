@@ -12,11 +12,11 @@
 	http://www.springframework.org/schema/tx/spring-tx.xsd">
 	
 	<bean id="managerAction" class="action.ManagerAction" scope="prototype">
-		<property name="managerService" ref="managerService"></property>
+		<property name="managerService" ref="managerServiceImpl"></property>
 	</bean>
 	
-	<bean id="managerService" class="service.ManagerService">
-		<property name="managerDaoImpl" ref="managerDaoImpl"></property>
+	<bean id="managerServiceImpl" class="service.ManagerServiceImpl">
+		<property name="managerDao" ref="managerDaoImpl"></property>
 	</bean>
 	
 	<bean id="managerDaoImpl" class="dao.ManagerDaoImpl">

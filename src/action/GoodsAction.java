@@ -13,12 +13,18 @@ import javax.servlet.http.HttpServletRequest;
 import org.apache.struts2.ServletActionContext;
 
 import com.opensymphony.xwork2.ActionSupport;
-import com.opensymphony.xwork2.ModelDriven;
 
 import entity.Goods;
 import service.GoodsService;
 
 public class GoodsAction extends ActionSupport{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	/**
+	 * 
+	 */
 	private GoodsService goodsService;
 	public void setGoodsService(GoodsService goodsService) {
 		this.goodsService = goodsService;
